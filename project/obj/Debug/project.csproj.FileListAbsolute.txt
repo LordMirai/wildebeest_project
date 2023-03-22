@@ -8,3 +8,4 @@ D:\Documents\FACULTATE\An III sem II\AI\proiect wildebeest\project\project\obj\D
 D:\Documents\FACULTATE\An III sem II\AI\proiect wildebeest\project\project\obj\Debug\project.csproj.CoreCompileInputs.cache
 D:\Documents\FACULTATE\An III sem II\AI\proiect wildebeest\project\project\obj\Debug\project.exe
 D:\Documents\FACULTATE\An III sem II\AI\proiect wildebeest\project\project\obj\Debug\project.pdb
+D:\Documents\FACULTATE\An III sem II\AI\proiect wildebeest\project\project\obj\Debug\project.Form1.resources
