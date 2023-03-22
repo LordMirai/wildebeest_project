@@ -1,0 +1,10 @@
+D:\Documents\FACULTATE\An III sem II\AI\proiect wildebeest\project\project\bin\Debug\project.exe.config
+D:\Documents\FACULTATE\An III sem II\AI\proiect wildebeest\project\project\bin\Debug\project.exe
+D:\Documents\FACULTATE\An III sem II\AI\proiect wildebeest\project\project\bin\Debug\project.pdb
+D:\Documents\FACULTATE\An III sem II\AI\proiect wildebeest\project\project\obj\Debug\project.csproj.AssemblyReference.cache
+D:\Documents\FACULTATE\An III sem II\AI\proiect wildebeest\project\project\obj\Debug\project.csproj.SuggestedBindingRedirects.cache
+D:\Documents\FACULTATE\An III sem II\AI\proiect wildebeest\project\project\obj\Debug\project.Properties.Resources.resources
+D:\Documents\FACULTATE\An III sem II\AI\proiect wildebeest\project\project\obj\Debug\project.csproj.GenerateResource.cache
+D:\Documents\FACULTATE\An III sem II\AI\proiect wildebeest\project\project\obj\Debug\project.csproj.CoreCompileInputs.cache
+D:\Documents\FACULTATE\An III sem II\AI\proiect wildebeest\project\project\obj\Debug\project.exe
+D:\Documents\FACULTATE\An III sem II\AI\proiect wildebeest\project\project\obj\Debug\project.pdb
