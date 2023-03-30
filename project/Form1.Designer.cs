@@ -38,11 +38,12 @@
             // 
             // bkgr
             // 
+            this.bkgr.ErrorImage = null;
             this.bkgr.Image = ((System.Drawing.Image)(resources.GetObject("bkgr.Image")));
-            this.bkgr.InitialImage = ((System.Drawing.Image)(resources.GetObject("bkgr.InitialImage")));
-            this.bkgr.Location = new System.Drawing.Point(0, 0);
+            this.bkgr.InitialImage = null;
+            this.bkgr.Location = new System.Drawing.Point(0, 12);
             this.bkgr.Name = "bkgr";
-            this.bkgr.Size = new System.Drawing.Size(604, 540);
+            this.bkgr.Size = new System.Drawing.Size(575, 519);
             this.bkgr.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.bkgr.TabIndex = 0;
             this.bkgr.TabStop = false;
@@ -51,9 +52,9 @@
             // hint
             // 
             this.hint.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hint.Location = new System.Drawing.Point(12, 683);
+            this.hint.Location = new System.Drawing.Point(12, 652);
             this.hint.Name = "hint";
-            this.hint.Size = new System.Drawing.Size(766, 28);
+            this.hint.Size = new System.Drawing.Size(766, 98);
             this.hint.TabIndex = 1;
             this.hint.Text = "Hint:";
             this.hint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -73,7 +74,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(829, 720);
+            this.ClientSize = new System.Drawing.Size(829, 790);
             this.Controls.Add(this.assistance);
             this.Controls.Add(this.hint);
             this.Controls.Add(this.bkgr);
