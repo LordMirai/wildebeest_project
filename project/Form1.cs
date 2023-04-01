@@ -59,7 +59,7 @@ namespace project
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            assistance.Location = new System.Drawing.Point(offsetX, offsetY);
+            // assistance.Location = new System.Drawing.Point(offsetX, offsetY);
 
             for (int i = 0; i < 10; i++)
             {
@@ -69,7 +69,7 @@ namespace project
                 }
             }
 
-            hint.Text = "Board start position: " + bkgr.Location;
+            hint.Text = @"Board start position: " + bkgr.Location;
         }
     }
 }

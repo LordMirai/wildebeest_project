@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.bkgr = new System.Windows.Forms.PictureBox();
             this.hint = new System.Windows.Forms.Label();
-            this.assistance = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bkgr)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,22 +51,12 @@
             // hint
             // 
             this.hint.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hint.Location = new System.Drawing.Point(12, 652);
+            this.hint.Location = new System.Drawing.Point(12, 646);
             this.hint.Name = "hint";
             this.hint.Size = new System.Drawing.Size(766, 98);
             this.hint.TabIndex = 1;
             this.hint.Text = "Hint:";
             this.hint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // assistance
-            // 
-            this.assistance.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.assistance.Location = new System.Drawing.Point(342, 130);
-            this.assistance.Name = "assistance";
-            this.assistance.Size = new System.Drawing.Size(5, 5);
-            this.assistance.TabIndex = 2;
-            this.assistance.Text = "X";
-            this.assistance.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
@@ -75,7 +64,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(829, 790);
-            this.Controls.Add(this.assistance);
             this.Controls.Add(this.hint);
             this.Controls.Add(this.bkgr);
             this.Name = "Form1";
@@ -85,8 +73,6 @@
             this.ResumeLayout(false);
             this.PerformLayout();
         }
-
-        private System.Windows.Forms.Label assistance;
 
         private System.Windows.Forms.Label hint;
 
