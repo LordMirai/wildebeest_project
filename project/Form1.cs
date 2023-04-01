@@ -9,7 +9,7 @@ namespace project
         static int offsetEndX = 553, offsetEndY = 502;
         static int cellSize = 50;
 
-        private int[,] matrix = new int[10, 11];
+        private PieceCode[,] matrix = new PieceCode[10, 11];
 
         public Form1()
         {
@@ -19,7 +19,7 @@ namespace project
         private void bkgr_Click(object sender, EventArgs e)
         {
             int[] pos = getPosition();
-            hint.Text = $@"Selected cell: {getPositionFormatted()}[{pos[0]}, {pos[1]}]";
+            hint.Text = $@"Selected cell: {getPositionFormatted()}[{pos[0]}, {pos[1]}] - {matrix[pos[0], pos[1]]}";
         }
 
 
@@ -70,6 +70,31 @@ namespace project
             }
 
             hint.Text = @"Board start position: " + bkgr.Location;
+            
+            Piece pawn = new Piece("Pawn", "pawn_white.png", PieceCode.Pawn);
+            
+            makePiece(pawn, 0, 1);
+        }
+        
+        public void makePiece(Piece piece, int x, int y)
+        {
+            hint.Text = $@"Piece: {piece.name} at [{x}, {y}]";
+            PictureBox pb = new PictureBox();
+            pb.ImageLocation = piece.imagePath;
+            pb.Location = new System.Drawing.Point(offsetX + x * cellSize, offsetY + y * cellSize);
+            pb.Size = new System.Drawing.Size(cellSize, cellSize);
+            pb.BackColor = System.Drawing.Color.Transparent;
+
+            matrix[x, y] = piece.code;
+            
+            Controls.Add(pb);
+            pb.BringToFront();
+            
+            bkgr.SendToBack();
+
+            hint.Text = $"Location: {piece.imagePath}";
+
         }
     }
+    
 }

@@ -54,6 +54,8 @@
         <Compile Include="Form1.Designer.cs">
             <DependentUpon>Form1.cs</DependentUpon>
         </Compile>
+        <Compile Include="Piece.cs" />
+        <Compile Include="PieceCode.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <EmbeddedResource Include="Form1.resx">
@@ -83,6 +85,14 @@
     </ItemGroup>
     <ItemGroup>
       <Content Include="board.png" />
+      <Content Include="pieces\drawdiagram.png" />
+      <Content Include="pieces\knight_black.png" />
+      <Content Include="pieces\knight_white.png" />
+      <Content Include="pieces\pawn_black.png" />
+      <Content Include="pieces\pawn_white.png" />
+      <Content Include="pieces\rook.png" />
+      <Content Include="pieces\rook_black.png" />
+      <Content Include="pieces\rook_white.png" />
       <Content Include="Resources\board.png" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

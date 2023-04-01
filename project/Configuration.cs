@@ -2,7 +2,7 @@
 {
     public class Configuration
     {
-        public bool load_configuration(int[,] matrix, Config cfgIn = Config.Empty)
+        public bool load_configuration(PieceCode[,] matrix, Config cfgIn = Config.Empty)
         {
             switch (cfgIn)
             {
@@ -11,7 +11,7 @@
                     {
                         for (int j = 0; j < 11; j++)
                         {
-                            matrix[i, j] = 0;
+                            matrix[i, j] = PieceCode.None;
                         }
                     }
                     return true;
