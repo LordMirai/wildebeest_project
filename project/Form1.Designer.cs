@@ -74,9 +74,9 @@
             this.PerformLayout();
         }
 
-        private System.Windows.Forms.Label hint;
+        public System.Windows.Forms.Label hint;
 
-        private System.Windows.Forms.PictureBox bkgr;
+        public System.Windows.Forms.PictureBox bkgr;
 
         #endregion
     }
