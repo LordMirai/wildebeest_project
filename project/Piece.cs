@@ -8,6 +8,7 @@ namespace project
         public string imagePath;
         public PieceCode code;
         public bool isWhite;
+        public int[] location;
 
         public Piece()
         {
@@ -38,6 +39,15 @@ namespace project
             this.imagePath = getPath(imagePath);
         }
 
+        public Piece(string name, string imagePath, PieceCode code, bool isWhite, int[] location)
+        {
+            this.name = name;
+            this.imagePath = imagePath;
+            this.code = code;
+            this.isWhite = isWhite;
+            this.location = location;
+        }
+
         private string getPath(string end)
         {
             string color = isWhite ? "white" : "black";
@@ -46,7 +56,18 @@ namespace project
             directory += $"\\pieces\\{end}_{color}.png";
             return directory;
         }
-        
+
+        public static Piece getByCode(PieceCode code)
+        {
+            switch (code)
+            {
+                case PieceCode.Pawn:
+                    return new Piece("Pawn","pawn",code);
+                
+                default:
+                    return new Piece("None", "", code);
+            }
+        }
         
     }
 }

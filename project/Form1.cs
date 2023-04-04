@@ -10,7 +10,10 @@ namespace project
         public static int offsetEndX = 553, offsetEndY = 502;
         public static int cellSize = 50;
 
+        public static GameState state = GameState.WhiteTurn;
+
         public PieceCode[,] matrix = new PieceCode[10, 11];
+        public Piece selectedPiece;
 
         public Form1()
         {
@@ -67,7 +70,14 @@ namespace project
 
         public string prettyPosition(int x, int y)
         {
-            return "";
+            string outS = "";
+            if (x != -1)
+            {
+                char let = (char)(65 + x);
+                outS = $"{let}{(10 - y)}";
+            }
+
+            return outS;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -118,7 +128,7 @@ namespace project
 
             bkgr.SendToBack();
 
-            hint.Text = $@"Location: {piece.imagePath}";
+            // hint.Text = $@"Location: {piece.imagePath}";
         }
 
         private Color getTableColor(int x, int y)
@@ -139,26 +149,15 @@ namespace project
             }
         }
 
-        private void clickPlane_Click(object sender, EventArgs e)
-        {
-            int[] pos = getPosition();
-            hint.Text = $@"Selected cell: {getPositionFormatted()}[{pos[0]}, {pos[1]}] - {matrix[pos[0], pos[1]]}";
-        }
+        
+    }
 
-
-        private void clickPlane_Paint(object sender, PaintEventArgs e)
-        {
-            // throw new System.NotImplementedException();
-        }
-
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x20;
-                return cp;
-            }
-        }
+    public enum GameState
+    {
+        WhiteTurn,
+        BlackTurn,
+        GameEnd,
+        Errored,
+        Suspended
     }
 }
