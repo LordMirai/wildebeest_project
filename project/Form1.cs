@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Drawing;
 
@@ -12,8 +13,10 @@ namespace project
 
         public static GameState state = GameState.WhiteTurn;
 
-        public PieceCode[,] matrix = new PieceCode[10, 11];
+        public Piece[,] matrix = new Piece[10, 11];
         public Piece selectedPiece;
+
+        private List<PictureBox> piecePictures = new List<PictureBox>();
 
         public Form1()
         {
@@ -51,7 +54,7 @@ namespace project
 
             position[0] = x;
             position[1] = y;
-            
+
             return position;
         }
 
@@ -88,7 +91,7 @@ namespace project
             {
                 for (int j = 0; j < 11; j++)
                 {
-                    matrix[i, j] = 0; // init empty matrix
+                    matrix[i, j] = null; // init empty matrix
                 }
             }
 
@@ -105,7 +108,7 @@ namespace project
         public void makePiece(Piece piece, int x, int y)
         {
             int pieceOffsetX = -5, pieceOffsetY = -30;
-            hint.Text = $@"Piece: {piece.name} at [{x}, {y}]";
+            // hint.Text = $@"Piece: {piece.name} at [{x}, {y}]";
             PictureBox pb = new PictureBox();
             pb.Parent = bkgr;
             pb.ImageLocation = piece.imagePath;
@@ -114,42 +117,54 @@ namespace project
             pb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
             pb.BackColor = getTableColor(x, y);
             pb.SizeMode = PictureBoxSizeMode.CenterImage;
-            
-            pb.Click += delegate (object sender, EventArgs e)
+
+            pb.Click += delegate(object sender, EventArgs e)
             {
-                // hint.Text = $@"Piece: {piece.name} at [{x}, {y}]";
                 Driver.cellClicked(x, y);
             };
 
-            matrix[x, y] = piece.code;
+            piecePictures.Add(pb);
+
+            matrix[x, y] = piece;
 
             Controls.Add(pb);
             pb.BringToFront();
 
             bkgr.SendToBack();
-
-            // hint.Text = $@"Location: {piece.imagePath}";
         }
 
         private Color getTableColor(int x, int y)
         {
             if (x % 2 == 0)
+                return y % 2 == 0 ? Color.FromArgb(204, 204, 17) : Color.FromArgb(51, 153, 51);
+            
+            return y % 2 == 0 ? Color.FromArgb(51, 153, 51) : Color.FromArgb(204, 204, 17);
+        }
+
+        private void clearBoard()
+        {
+            foreach (var elem in piecePictures)
             {
-                if (y % 2 == 0)
-                    return Color.FromArgb(204, 204, 17);
-                else
-                    return Color.FromArgb(51, 153, 51);
-            }
-            else
-            {
-                if (y % 2 == 0)
-                    return Color.FromArgb(51, 153, 51);
-                else
-                    return Color.FromArgb(204, 204, 17);
+                Controls.Remove(elem);
             }
         }
 
-        
+        public void updateBoard()
+        {
+            clearBoard();
+
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 11; j++)
+                {
+                    if (matrix[i, j] != null)
+                    {
+                        Piece created = matrix[i, j];
+                        makePiece(created, j, i);
+                    }
+                }
+            }
+        }
     }
 
     public enum GameState

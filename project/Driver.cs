@@ -9,37 +9,44 @@ namespace project
         public static void cellClicked(int x, int y)
         {
             (x, y) = (y, x);
-
-            PieceCode cellPiece = form.matrix[x, y];
-            if (form.selectedPiece != null) // piece is selected, move
+            
+            var selP = form.selectedPiece;
+            var cellPiece = form.matrix[x, y];
+            
+            if (selP != null) // piece is selected, move
             {
                 // todo: check if move is legal
 
-                if (cellPiece != PieceCode.None)
+                if (cellPiece != null)
                 {
                     // capture
-                    form.hint.Text = $@"Captured a {cellPiece} with a {form.selectedPiece}";
+                    form.hint.Text = $@"Captured a {cellPiece} with a {selP.name}";
                 }
                 else
                 {
+                    // regular move
                     // ! this is extremely broken and i have no idea why.
-                    string locStart =
-                        form.prettyPosition(form.selectedPiece.location[0], form.selectedPiece.location[1]);
-                    string locEnd =
-                        form.prettyPosition(y, x);
-                    form.hint.Text = $@"Piece moved from {locStart} to {locEnd}.";
-                    form.matrix[x, y] = form.selectedPiece.code;
+                    var locStart = form.prettyPosition(selP.location[0], selP.location[1]);
+                    var locEnd = form.prettyPosition(y, x);
+                    form.hint.Text = $@"Piece moved from {locStart} to {locEnd}. X:{x}, Y:{y}";
+                    
+                    form.matrix[x, y] = selP;
+                    form.matrix[x, y].location = new[] { y, x };
+                    
+                    form.matrix[selP.location[0], selP.location[1]] = null;
+                    
+                    form.updateBoard();
                 }
 
                 form.selectedPiece = null; // reset selected
             }
             else
             {
-                if (cellPiece != PieceCode.None)
+                if (cellPiece != null)
                 {
-                    form.selectedPiece = Piece.getByCode(cellPiece);
+                    form.selectedPiece = Piece.getByCode(cellPiece.code);
                     form.selectedPiece.location = new[] { x, y };
-                    form.hint.Text = $@"Selected piece: {cellPiece}";
+                    form.hint.Text = $@"Selected piece: {cellPiece.name}";
                 }
                 else
                 {
