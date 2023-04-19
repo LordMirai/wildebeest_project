@@ -8,7 +8,7 @@ namespace project
         public string imagePath;
         public PieceCode code;
         public bool isWhite;
-        public int[] location;
+        public int[] location = new[] { 0, 0 };
 
         public Piece()
         {
@@ -22,7 +22,7 @@ namespace project
             isWhite = true;
             this.imagePath = getPath(imagePath);
         }
-        
+
         public Piece(string name, string imagePath, PieceCode code)
         {
             this.name = name;
@@ -30,7 +30,7 @@ namespace project
             isWhite = true;
             this.imagePath = getPath(imagePath);
         }
-        
+
         public Piece(string name, string imagePath, PieceCode code, bool isWhite)
         {
             this.name = name;
@@ -62,12 +62,11 @@ namespace project
             switch (code)
             {
                 case PieceCode.Pawn:
-                    return new Piece("Pawn","pawn",code);
-                
+                    return new Piece("Pawn", "pawn", code);
+
                 default:
                     return new Piece("None", "", code);
             }
         }
-        
     }
 }

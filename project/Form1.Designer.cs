@@ -40,7 +40,8 @@
             this.bkgr.ErrorImage = null;
             this.bkgr.Image = ((System.Drawing.Image)(resources.GetObject("bkgr.Image")));
             this.bkgr.InitialImage = null;
-            this.bkgr.Location = new System.Drawing.Point(0, 12);
+            this.bkgr.Location = new System.Drawing.Point(0, 10);
+            this.bkgr.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.bkgr.Name = "bkgr";
             this.bkgr.Size = new System.Drawing.Size(575, 519);
             this.bkgr.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -51,23 +52,25 @@
             // hint
             // 
             this.hint.Font = new System.Drawing.Font("Comic Sans MS", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hint.Location = new System.Drawing.Point(12, 646);
+            this.hint.Location = new System.Drawing.Point(9, 525);
+            this.hint.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.hint.Name = "hint";
-            this.hint.Size = new System.Drawing.Size(766, 98);
+            this.hint.Size = new System.Drawing.Size(574, 80);
             this.hint.TabIndex = 1;
             this.hint.Text = "Hint:";
             this.hint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(829, 790);
+            this.ClientSize = new System.Drawing.Size(596, 642);
             this.Controls.Add(this.hint);
             this.Controls.Add(this.bkgr);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form1";
-            this.Text = "Wildebeest Schach";
+            this.Text = "Wildebeest Chess";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bkgr)).EndInit();
             this.ResumeLayout(false);

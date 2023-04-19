@@ -30,13 +30,13 @@ namespace project
 
         private void bkgr_Click(object sender, EventArgs e)
         {
-            int[] pos = getPosition();
+            int[] pos = clickPosition();
             // hint.Text = $@"Selected cell: {getPositionFormatted()}[{pos[0]}, {pos[1]}] - {matrix[pos[0], pos[1]]}";
             Driver.cellClicked(pos[0], pos[1]);
         }
 
 
-        int[] getPosition()
+        int[] clickPosition()
         {
             int[] position = { -1, -1 };
 
@@ -61,7 +61,7 @@ namespace project
         public string getPositionFormatted()
         {
             string outS = "";
-            int[] pos = getPosition();
+            int[] pos = clickPosition();
             if (pos[0] != -1)
             {
                 char let = (char)(65 + pos[0]);
@@ -98,11 +98,13 @@ namespace project
             hint.Text = @"Board start position: " + bkgr.Location;
 
             Piece pawn = new Piece("Pawn", "pawn", PieceCode.Pawn);
+            Piece bQueen = new Piece("Queen", "queen", PieceCode.Queen, false);
 
             makePiece(pawn, 0, 1);
             makePiece(pawn, 1, 1);
 
             makePiece(pawn, 5, 5);
+            makePiece(bQueen, 6, 6);
         }
 
         public void makePiece(Piece piece, int x, int y)
@@ -112,20 +114,19 @@ namespace project
             PictureBox pb = new PictureBox();
             pb.Parent = bkgr;
             pb.ImageLocation = piece.imagePath;
-            pb.Location = new Point(offsetX + x * cellSize + pieceOffsetX, offsetY + y * cellSize + pieceOffsetY);
+            pb.Location = new Point(offsetX + y * cellSize + pieceOffsetX, offsetY + x * cellSize + pieceOffsetY);
+            // pb.Location = new Point(offsetX + x * cellSize + pieceOffsetX, offsetY + y * cellSize + pieceOffsetY);
             pb.Size = new Size(cellSize, cellSize);
             pb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
             pb.BackColor = getTableColor(x, y);
             pb.SizeMode = PictureBoxSizeMode.CenterImage;
 
-            pb.Click += delegate(object sender, EventArgs e)
-            {
-                Driver.cellClicked(x, y);
-            };
+            pb.Click += delegate(object sender, EventArgs e) { Driver.cellClicked(x, y); };
 
             piecePictures.Add(pb);
 
             matrix[x, y] = piece;
+            // hint.Text = $@"Set {x},{y} to {piece.name}";
 
             Controls.Add(pb);
             pb.BringToFront();
@@ -137,7 +138,7 @@ namespace project
         {
             if (x % 2 == 0)
                 return y % 2 == 0 ? Color.FromArgb(204, 204, 17) : Color.FromArgb(51, 153, 51);
-            
+
             return y % 2 == 0 ? Color.FromArgb(51, 153, 51) : Color.FromArgb(204, 204, 17);
         }
 
@@ -160,7 +161,7 @@ namespace project
                     if (matrix[i, j] != null)
                     {
                         Piece created = matrix[i, j];
-                        makePiece(created, j, i);
+                        makePiece(created, i, j); // ! ref point, this is what broke it, now we need to find how to invert it
                     }
                 }
             }
