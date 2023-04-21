@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace project
+﻿namespace project
 {
     public class Driver
     {
@@ -40,7 +38,7 @@ namespace project
                         // do things
 
                         form.matrix[selP.location[0], selP.location[1]] = null;
-                        form.matrix[x, y] = selP;
+                        form.matrix[x, y] = selP.clone();
 
                         form.updateBoard();
                     }
@@ -51,12 +49,14 @@ namespace project
 
                     // ! this is extremely broken and i have no idea why.
                     var locStart = form.prettyPosition(selP.location[0], selP.location[1]);
-                    var locEnd = form.prettyPosition(x, y);
+                    var locEnd = form.prettyPosition(y, x); // ! question not the inversion, it makes no sense.
                     form.hint.Text =
                         $@"Piece moved from {locStart} to {locEnd}. From {selP.location[0]}, {selP.location[1]} to X:{x}, Y:{y}";
 
                     form.matrix[selP.location[0], selP.location[1]] = null;
-                    selP.location = new[] { x, y };
+
+                    selP.location[0] = x;
+                    selP.location[1] = y;
                     form.matrix[x, y] = selP.clone();
 
                     form.updateBoard();

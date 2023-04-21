@@ -111,6 +111,7 @@ namespace project
 
             makePiece(pawn, 5, 5);
             makePiece(bQueen, 6, 6);
+            makePiece(pawn,3,2);
         }
 
         /**
