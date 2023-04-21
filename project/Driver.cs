@@ -1,9 +1,17 @@
-﻿namespace project
+﻿using System;
+
+namespace project
 {
     public class Driver
     {
         public static Form1 form;
 
+        /**
+         * <summary>Processes all behavior on a cell click - move and capture.</summary>
+         *
+         * <param name="x">X (row) coordinate</param>
+         * <param name="y">Y (column) coordinate</param>
+         */
         public static void cellClicked(int x, int y)
         {
             (x, y) = (y, x);
@@ -48,9 +56,8 @@
                         $@"Piece moved from {locStart} to {locEnd}. From {selP.location[0]}, {selP.location[1]} to X:{x}, Y:{y}";
 
                     form.matrix[selP.location[0], selP.location[1]] = null;
-                    // ?! selP.location = new[] { x, y };
-                    // form.matrix[selP.location[1], selP.location[0]] = null;
-                    form.matrix[x, y] = selP;
+                    selP.location = new[] { x, y };
+                    form.matrix[x, y] = selP.clone();
 
                     form.updateBoard();
                 }
@@ -75,6 +82,14 @@
             // form.hint.Text = $@"Selected cell: [{x}, {y}] - There's a {cellPiece} there";
         }
 
+        /**
+         * Checks if pieces' colors coincide (white to white and black to black)
+         *
+         * <param name="piece1">First piece to check</param>
+         * <param name="piece2">Second piece to check</param>
+         * 
+         * <returns>The coincidence between them</returns>
+         */
         private static bool sameColor(Piece piece1, Piece piece2)
         {
             return (piece1.isWhite && piece2.isWhite) || (!piece1.isWhite && !piece2.isWhite);

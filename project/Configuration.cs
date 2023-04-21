@@ -2,7 +2,15 @@
 {
     public class Configuration
     {
-        public bool load_configuration(Piece[,] matrix, Config cfgIn = Config.Empty)
+        /**
+         * <summary>Loads a matrix with a predefined configuration. Should work for table initialization</summary>
+         *
+         * <param name="matrix">Matrix to populate, bi-dimensional</param>
+         * <param name="cfgIn">Config enum value to use</param>
+         *
+         * <returns>The success in loading the configuration. Invalid values return false</returns>
+         */
+        public bool load_configuration(ref Piece[,] matrix, Config cfgIn = Config.Empty)
         {
             switch (cfgIn)
             {
@@ -14,6 +22,9 @@
                             matrix[i, j] = null;
                         }
                     }
+                    return true;
+                case Config.Default:
+                    // to be implemented.
                     return true;
                 default:
                     return false;

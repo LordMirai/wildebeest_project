@@ -86,7 +86,6 @@
     </ItemGroup>
     <ItemGroup>
       <Content Include="board.png" />
-      <Content Include="clickplane.png" />
       <Content Include="pieces\drawdiagram.png" />
       <Content Include="pieces\knight_black.png" />
       <Content Include="pieces\knight_white.png" />

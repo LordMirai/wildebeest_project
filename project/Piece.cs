@@ -48,6 +48,18 @@ namespace project
             this.location = location;
         }
 
+        public Piece clone()
+        {
+            return new Piece(name, imagePath, code, isWhite,location);
+        }
+
+        /**
+         * Returns the image path relative to CWD
+         *
+         * <param name="end">The actual piece name</param>
+         * <example>getPath("queen") => "[...]\pieces\queen_white.png"</example>
+         * <returns>image path.</returns>
+         */
         private string getPath(string end)
         {
             string color = isWhite ? "white" : "black";
@@ -57,12 +69,22 @@ namespace project
             return directory;
         }
 
+        /**
+         * <summary>A way to quickly get a piece by its code. Does not cover color or location</summary>
+         *
+         * <param name="code">The piece code to test</param>
+         *
+         * <example>getByCode(PieceCode.Pawn) => Piece("Pawn","pawn",PieceCode.Pawn)</example>
+         */
         public static Piece getByCode(PieceCode code)
         {
             switch (code)
             {
                 case PieceCode.Pawn:
                     return new Piece("Pawn", "pawn", code);
+                case PieceCode.Queen:
+                    return new Piece("Queen", "queen", code);
+                    
 
                 default:
                     return new Piece("None", "", code);

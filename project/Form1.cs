@@ -28,10 +28,12 @@ namespace project
             // bkgr.TransparencyKey = Color.Transparent;
         }
 
+        /**
+         * Background click. Fires cellClicked on row/col coords
+         */
         private void bkgr_Click(object sender, EventArgs e)
         {
             int[] pos = clickPosition();
-            // hint.Text = $@"Selected cell: {getPositionFormatted()}[{pos[0]}, {pos[1]}] - {matrix[pos[0], pos[1]]}";
             Driver.cellClicked(pos[0], pos[1]);
         }
 
@@ -58,7 +60,11 @@ namespace project
             return position;
         }
 
-        public string getPositionFormatted()
+        /**
+         * <summary>Takes the coordinates from clickPosition and makes it readable</summary>
+         * <example>6,1 => B4 </example>
+         */
+        public string clickPositionFormatted()
         {
             string outS = "";
             int[] pos = clickPosition();
@@ -107,6 +113,15 @@ namespace project
             makePiece(bQueen, 6, 6);
         }
 
+        /**
+         * <summary>Makes a WinForms PictureBox corresponding to a piece.
+         * It also assigns a click event that does the same thing as background click in driver
+         * </summary>
+         *
+         * <param name="piece">The Piece object to process</param>
+         * <param name="x">X (row) coordinate</param>
+         * <param name="y">Y (column) coordinate</param>
+         */
         public void makePiece(Piece piece, int x, int y)
         {
             int pieceOffsetX = -5, pieceOffsetY = -30;
@@ -114,8 +129,9 @@ namespace project
             PictureBox pb = new PictureBox();
             pb.Parent = bkgr;
             pb.ImageLocation = piece.imagePath;
-            pb.Location = new Point(offsetX + y * cellSize + pieceOffsetX, offsetY + x * cellSize + pieceOffsetY);
-            // pb.Location = new Point(offsetX + x * cellSize + pieceOffsetX, offsetY + y * cellSize + pieceOffsetY);
+            pb.Location =
+                new Point(offsetX + y * cellSize + pieceOffsetX,
+                    offsetY + x * cellSize + pieceOffsetY); // y and x are reversed
             pb.Size = new Size(cellSize, cellSize);
             pb.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Right;
             pb.BackColor = getTableColor(x, y);
@@ -126,7 +142,6 @@ namespace project
             piecePictures.Add(pb);
 
             matrix[x, y] = piece;
-            // hint.Text = $@"Set {x},{y} to {piece.name}";
 
             Controls.Add(pb);
             pb.BringToFront();
@@ -134,6 +149,13 @@ namespace project
             bkgr.SendToBack();
         }
 
+        /**
+         * <summary>Returns the background color for a cell, by coordinates.</summary>
+         *
+         * <param name="x">X (row) coordinate</param>
+         * <param name="y">Y (column) coordinate</param>
+         * <returns>The resulting color. Yellow is the equivalent of White and Green is equivalent to Black</returns>
+         */
         private Color getTableColor(int x, int y)
         {
             if (x % 2 == 0)
@@ -142,6 +164,9 @@ namespace project
             return y % 2 == 0 ? Color.FromArgb(51, 153, 51) : Color.FromArgb(204, 204, 17);
         }
 
+        /**
+         * Removes all registered controls from the form (deletes the pieces' pictures)
+         */
         private void clearBoard()
         {
             foreach (var elem in piecePictures)
@@ -150,6 +175,9 @@ namespace project
             }
         }
 
+        /**
+         * Populates the board with the matrix pieces.
+         */
         public void updateBoard()
         {
             clearBoard();
@@ -158,13 +186,24 @@ namespace project
             {
                 for (int j = 0; j < 11; j++)
                 {
-                    if (matrix[i, j] != null)
-                    {
-                        Piece created = matrix[i, j];
-                        makePiece(created, i, j); // ! ref point, this is what broke it, now we need to find how to invert it
-                    }
+                    if (matrix[i, j] != null) // ? if there's a piece present, make the corresponding image
+                        makePiece(matrix[i, j], i, j); // ! ref point, this is what broke it before
                 }
             }
+        }
+
+        /**
+         * Close on escape
+         */
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                Close();
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 
