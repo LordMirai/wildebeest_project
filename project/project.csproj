@@ -86,14 +86,23 @@
     </ItemGroup>
     <ItemGroup>
       <Content Include="board.png" />
-      <Content Include="pieces\drawdiagram.png" />
+      <Content Include="pieces\bishop_black.png" />
+      <Content Include="pieces\bishop_white.png" />
+      <Content Include="pieces\board template.png" />
+      <Content Include="pieces\camel_black.png" />
+      <Content Include="pieces\camel_white.png" />
+      <Content Include="pieces\king_black.png" />
+      <Content Include="pieces\king_white.png" />
       <Content Include="pieces\knight_black.png" />
       <Content Include="pieces\knight_white.png" />
       <Content Include="pieces\pawn_black.png" />
       <Content Include="pieces\pawn_white.png" />
-      <Content Include="pieces\rook.png" />
+      <Content Include="pieces\queen_black.png" />
+      <Content Include="pieces\queen_white.png" />
       <Content Include="pieces\rook_black.png" />
       <Content Include="pieces\rook_white.png" />
+      <Content Include="pieces\wildebeest_black.png" />
+      <Content Include="pieces\wildebeest_white.png" />
       <Content Include="Resources\board.png" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

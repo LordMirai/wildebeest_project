@@ -49,9 +49,11 @@
 
                     // ! this is extremely broken and i have no idea why.
                     var locStart = form.prettyPosition(selP.location[0], selP.location[1]);
-                    var locEnd = form.prettyPosition(y, x); // ! question not the inversion, it makes no sense.
-                    form.hint.Text =
-                        $@"Piece moved from {locStart} to {locEnd}. From {selP.location[0]}, {selP.location[1]} to X:{x}, Y:{y}";
+                    var locEnd = form.prettyPosition(x, y);
+                    // form.hint.Text =
+                        // $@"Piece moved from {locStart} to {locEnd}. From {selP.location[0]}, {selP.location[1]} to X:{x}, Y:{y}";
+                    form.hint.Text = $@"{selP.name} to {locEnd}";
+                    
 
                     form.matrix[selP.location[0], selP.location[1]] = null;
 
@@ -60,11 +62,13 @@
                     form.matrix[x, y] = selP.clone();
 
                     form.updateBoard();
+                    
+                    matrixDump();
                 }
 
                 form.selectedPiece = null; // reset selected
             }
-            else
+            else // ? select a piece
             {
                 if (cellPiece != null)
                 {
@@ -93,6 +97,27 @@
         private static bool sameColor(Piece piece1, Piece piece2)
         {
             return (piece1.isWhite && piece2.isWhite) || (!piece1.isWhite && !piece2.isWhite);
+        }
+
+        /**
+         * a way to debug the matrix, filling the hint text with all unempty positions
+         */
+        static void matrixDump()
+        {
+            var txt = "";
+            var mat = form.matrix;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 11; j++)
+                {
+                    if (mat[i, j] != null)
+                    {
+                        txt += $@"[{mat[i, j].name}: {form.prettyPosition(i, j)}] ";
+                    }
+                }
+            }
+
+            form.hint.Text = txt;
         }
     }
 }

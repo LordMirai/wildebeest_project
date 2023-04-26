@@ -77,13 +77,17 @@ namespace project
             return outS;
         }
 
+        /**
+         * <param name="x">Row (1-10)</param>
+         * <param name="y">Column (A-K)</param>
+         */
         public string prettyPosition(int x, int y)
         {
             string outS = "";
             if (x != -1)
             {
-                char let = (char)(65 + x);
-                outS = $"{let}{(10 - y)}";
+                char let = (char)(65 + y);
+                outS = $"{let}{(10 - x)}";
             }
 
             return outS;
@@ -106,12 +110,16 @@ namespace project
             Piece pawn = new Piece("Pawn", "pawn", PieceCode.Pawn);
             Piece bQueen = new Piece("Queen", "queen", PieceCode.Queen, false);
 
-            makePiece(pawn, 0, 1);
-            makePiece(pawn, 1, 1);
-
-            makePiece(pawn, 5, 5);
-            makePiece(bQueen, 6, 6);
-            makePiece(pawn,3,2);
+            
+            // load configuration
+            Configuration.load_configuration(ref matrix, Config.Default);
+            updateBoard();
+            // makePiece(pawn, 0, 1);
+            // makePiece(pawn, 1, 1);
+            //
+            // makePiece(pawn, 5, 5);
+            // makePiece(bQueen, 6, 6);
+            // makePiece(pawn,3,2);
         }
 
         /**

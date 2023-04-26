@@ -50,7 +50,7 @@ namespace project
 
         public Piece clone()
         {
-            return new Piece(name, imagePath, code, isWhite,location);
+            return new Piece(name, imagePath, code, isWhite, location);
         }
 
         /**
@@ -76,18 +76,31 @@ namespace project
          *
          * <example>getByCode(PieceCode.Pawn) => Piece("Pawn","pawn",PieceCode.Pawn)</example>
          */
-        public static Piece getByCode(PieceCode code)
+        public static Piece getByCode(PieceCode code, bool white = true)
         {
             switch (code)
             {
                 case PieceCode.Pawn:
-                    return new Piece("Pawn", "pawn", code);
+                    return new Piece("Pawn", "pawn", code, white);
                 case PieceCode.Queen:
-                    return new Piece("Queen", "queen", code);
+                    return new Piece("Queen", "queen", code, white);
+                case PieceCode.Bishop:
+                    return new Piece("Bishop", "bishop", code, white);
+                case PieceCode.Camel:
+                    return new Piece("Camel", "camel", code, white);
+                case PieceCode.King:
+                    return new Piece("King", "king", code, white);
+                case PieceCode.Rook:
+                    return new Piece("Rook", "rook", code, white);
+                case PieceCode.Knight:
+                    return new Piece("Knight", "knight", code, white);
+                case PieceCode.Wildebeest:
+                    return new Piece("Wildebeest", "wildebeest", code, white);
                     
 
+
                 default:
-                    return new Piece("None", "", code);
+                    return new Piece("None", "", code, white);
             }
         }
     }
