@@ -7,19 +7,17 @@ namespace project
         public string name;
         public string imagePath;
         public PieceCode code;
-        public bool isWhite;
+        public bool isWhite = true;
         public int[] location = new[] { 0, 0 };
 
         public Piece()
         {
             name = "Pawn";
-            isWhite = true;
         }
 
         public Piece(string name, string imagePath)
         {
             this.name = name;
-            isWhite = true;
             this.imagePath = getPath(imagePath);
         }
 
@@ -27,7 +25,6 @@ namespace project
         {
             this.name = name;
             this.code = code;
-            isWhite = true;
             this.imagePath = getPath(imagePath);
         }
 
@@ -42,7 +39,7 @@ namespace project
         public Piece(string name, string imagePath, PieceCode code, bool isWhite, int[] location)
         {
             this.name = name;
-            this.imagePath = imagePath;
+            this.imagePath = getPath(imagePath);
             this.code = code;
             this.isWhite = isWhite;
             this.location = location;
