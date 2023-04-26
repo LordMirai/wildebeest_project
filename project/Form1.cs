@@ -95,16 +95,6 @@ namespace project
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // assistance.Location = new System.Drawing.Point(offsetX, offsetY);
-
-            for (int i = 0; i < 10; i++)
-            {
-                for (int j = 0; j < 11; j++)
-                {
-                    matrix[i, j] = null; // init empty matrix
-                }
-            }
-
             hint.Text = @"Board start position: " + bkgr.Location;
 
             Piece pawn = new Piece("Pawn", "pawn", PieceCode.Pawn);
@@ -116,9 +106,9 @@ namespace project
             updateBoard();
             // makePiece(pawn, 0, 1);
             // makePiece(pawn, 1, 1);
-            //
+            
             // makePiece(pawn, 5, 5);
-            // makePiece(bQueen, 6, 6);
+            makePiece(ref bQueen, 6, 6);
             // makePiece(pawn,3,2);
         }
 
@@ -131,7 +121,7 @@ namespace project
          * <param name="x">X (row) coordinate</param>
          * <param name="y">Y (column) coordinate</param>
          */
-        public void makePiece(Piece piece, int x, int y)
+        public void makePiece(ref Piece piece, int x, int y)
         {
             int pieceOffsetX = -5, pieceOffsetY = -30;
             // hint.Text = $@"Piece: {piece.name} at [{x}, {y}]";
@@ -149,6 +139,8 @@ namespace project
             pb.Click += delegate(object sender, EventArgs e) { Driver.cellClicked(x, y); };
 
             piecePictures.Add(pb);
+
+            piece.location = new[] { x, y };
 
             matrix[x, y] = piece;
 
@@ -196,7 +188,7 @@ namespace project
                 for (int j = 0; j < 11; j++)
                 {
                     if (matrix[i, j] != null) // ? if there's a piece present, make the corresponding image
-                        makePiece(matrix[i, j], i, j); // ! ref point, this is what broke it before
+                        makePiece(ref matrix[i, j], i, j); // ! ref point, this is what broke it before
                 }
             }
         }
