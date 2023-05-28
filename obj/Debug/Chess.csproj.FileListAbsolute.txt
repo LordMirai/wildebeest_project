@@ -1,0 +1,27 @@
+D:\GitHub\Chess\bin\Debug\Chess.exe.config
+D:\GitHub\Chess\bin\Debug\Chess.exe
+D:\GitHub\Chess\bin\Debug\Chess.pdb
+D:\GitHub\Chess\obj\Debug\Chess.csproj.AssemblyReference.cache
+D:\GitHub\Chess\obj\Debug\Chess.csproj.SuggestedBindingRedirects.cache
+D:\GitHub\Chess\obj\Debug\Chess.Chess.resources
+D:\GitHub\Chess\obj\Debug\Chess.PieceSelection.resources
+D:\GitHub\Chess\obj\Debug\Chess.Properties.Resources.resources
+D:\GitHub\Chess\obj\Debug\Chess.Tile.resources
+D:\GitHub\Chess\obj\Debug\Chess.csproj.GenerateResource.cache
+D:\GitHub\Chess\obj\Debug\Chess.csproj.CoreCompileInputs.cache
+D:\GitHub\Chess\obj\Debug\Chess.exe
+D:\GitHub\Chess\obj\Debug\Chess.pdb
+D:\Folder nou\Chess\obj\Debug\Chess.csproj.AssemblyReference.cache
+D:\Folder nou\Chess\obj\Debug\Chess.csproj.SuggestedBindingRedirects.cache
+D:\Folder nou\Chess\obj\Debug\Chess.Chess.resources
+D:\Folder nou\Chess\obj\Debug\Chess.Properties.Resources.resources
+D:\Folder nou\Chess\obj\Debug\Chess.Tile.resources
+D:\Folder nou\Chess\obj\Debug\Chess.csproj.GenerateResource.cache
+D:\Folder nou\Chess\obj\Debug\Chess.csproj.CoreCompileInputs.cache
+D:\Folder nou\Chess\obj\Debug\Chess.exe
+D:\Folder nou\Chess\obj\Debug\Chess.pdb
+D:\Folder nou\Chess\bin\Debug\Chess.exe.config
+D:\Folder nou\Chess\bin\Debug\Chess.exe
+D:\Folder nou\Chess\bin\Debug\Chess.pdb
+D:\Folder nou\Chess\obj\Debug\Chess.RulesWindow.resources
+D:\Folder nou\Chess\obj\Debug\Chess.PieceSelection.resources
