@@ -118,7 +118,7 @@ namespace Chess
                         int xdir = move == 4 ? 1 : -1;
                         Board.tiles[pieceTile.GetY, pieceTile.GetX + xdir].PieceAssign(new ChessPiece(PieceKind.EMPTY)); return true;
                     }
-                    if ((pieceTile.GetY == 1 && pieceTile.piece.color == ChessColor.WHITE) || (pieceTile.GetY == 6 && pieceTile.piece.color == ChessColor.BLACK))
+                    if ((pieceTile.GetY == 1 && pieceTile.piece.color == ChessColor.WHITE) || (pieceTile.GetY == 8 && pieceTile.piece.color == ChessColor.BLACK))
                     {
                         PieceSelection pieceSelection = new PieceSelection(clickedTile);
                         pieceSelection.Show();
