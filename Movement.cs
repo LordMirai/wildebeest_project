@@ -233,11 +233,12 @@ namespace Chess
                     break;
                 // Pawn's move coordinates
                 case PieceKind.Pawn:
-                    moves = new PieceMove?[6];
+                    moves = new PieceMove?[7];
                     moves[0] = isNotOccupied(pieceTile.location.y + 1 * dir, pieceTile.location.x) ? destination(1 * dir, 0) : previousMove = null;
                     if (previousMove != null)
                     {
                         moves[1] = isNotOccupied(pieceTile.GetY + 2 * dir, pieceTile.GetX) && pieceTile.piece.firstMove ? destination(2 * dir, 0) : null;
+                        moves[6] = isNotOccupied(pieceTile.GetY + 3 * dir, pieceTile.GetX) && pieceTile.piece.firstMove ? destination(3 * dir, 0) : null;
                     }
                     moves[2] = destination(dir, 1);
                     moves[3] = destination(dir, -1);
